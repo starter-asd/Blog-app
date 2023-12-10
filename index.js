@@ -26,35 +26,45 @@ app.use(bodyParser.urlencoded({extended: true}));
 // Define static public folder
 app.use(express.static("public"));
 
+var allData = [];
+
 function addPost(data){
 	var date = new Date();
 	var msg = date.getFullYear().toString() +'-'+ ('0'+date.getMonth().toString()).slice(-2) +'-'+ ('0'+date.getDate().toString()).slice(-2) 
 	msg += ';'+ ('0'+date.getHours()).slice(-2) +':'+ ('0'+date.getMinutes()).slice(-2) +':'+ ('0'+date.getSeconds()).slice(-2) 
 	msg += ';'+ data.email + ';' + data.password + ';' + data.tittle + ';' + data.post + '\n';
 	// console.log(msg);
-	let aMsg = msg.split(";");
-	let newpost = {fecha: aMsg[0], hora: aMsg[1], email: aMsg[2], password: aMsg[3], tittle: aMsg[4], post: aMsg[5]};
-	postData.unshift(newpost);
-	try{
-		fs.appendFile(filePost, msg, (err) => {
-			if (err) throw err;
-			console.log("The file has been saved!");
-		});
-	}catch (ex){
-		console.log(ex);
-	}
-	return postData;
+	let d = date.getFullYear().toString() +'-'+ ('0'+date.getMonth().toString()).slice(-2) +'-'+ ('0'+date.getDate().toString()).slice(-2);
+	let dd  = {"date" : d,
+				"email" : data.email, 
+			    "password" : data.password,
+			    "title" : data.tittle,
+			    "post" : data.post};
+	allData.push(dd);
+	console.log(allData);
+	// let aMsg = msg.split(";");
+	// let newpost = {fecha: aMsg[0], hora: aMsg[1], email: aMsg[2], password: aMsg[3], tittle: aMsg[4], post: aMsg[5]};
+	// postData.unshift(newpost);
+	// try{
+	// 	fs.appendFile(filePost, msg, (err) => {
+	// 		if (err) throw err;
+	// 		console.log("The file has been saved!");
+	// 	});
+	// }catch (ex){
+	// 	console.log(ex);
+	// }
+	return allData;
 };
 
 function updatePost(vbody, vid){
 	// console.log(vbody);
 	// console.log(vid);
-	postData[vid].tittle = vbody.tittle;
-	postData[vid].post = vbody.post;
+	allData[vid].title = vbody.tittle;
+	allData[vid].post = vbody.post;
 };
 
 function deletePost(vid){
-	postData.splice(vid,1);
+	allData.splice(vid,1);
 };
 
 function readPost(){
@@ -109,7 +119,7 @@ function readPost(){
 app.get("/", (req, res) => {
 	// var fdata = readPost();
 	// console.log(req);
-	res.render('index',{data : postData});
+	res.render('index',{data :allData});
 });
 app.get("/addpost", (req, res) => {
 	res.render('addpost');
@@ -117,7 +127,7 @@ app.get("/addpost", (req, res) => {
 app.post("/submit", (req, res) => {
 	console.log(req.body);
 	addPost(req.body);
-	res.render('index',{data : postData});
+	res.render('index',{data : allData});
 });
 
 app.get("/editpost", (req, res) => {
