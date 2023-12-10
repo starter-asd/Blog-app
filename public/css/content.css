@@ -1,0 +1,54 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+header,
+footer {
+  flex: 0 0 auto;
+}
+
+main {
+  padding: 5vmin;
+  flex: 1 0 auto;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  color: rgb(161, 155, 155);
+}
+
+.profile {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+form {
+  margin-top: 50px;
+}
+
+
+/* [type="submit"] {
+  background: #3586ff;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: all 0.3s;
+  margin-top: -4px;
+}
+[type="submit"]:hover {
+  background: #3586ff;
+} */

@@ -1,0 +1,27 @@
+<div>
+	<h4 class="fst-italic">Recent posts</h4>
+	<ul class="list-unstyled">
+		<% if (locals.data) { 
+			let c=0;
+			const options = {
+				year: 'numeric',
+				month: 'long',
+				day: 'numeric'
+				};
+			data.forEach(function(dato){
+		%>
+		<li>
+			<a class="d-flex flex-column flex-lg-row gap-3 align-items-start align-items-lg-center py-3 link-body-emphasis text-decoration-none border-top" href="#">
+			<div class="col-lg-8">
+				<h6 class="mb-0"> <%=dato.tittle %> </h6>
+				<small class="text-body-secondary"><%=(new Date(dato.fecha+' '+dato.hora)).toLocaleDateString('en-US', options)+' '+dato.hora %></small>
+			</div>
+			</a>
+		</li>
+		<%		c++;
+			});
+		}
+		%>
+	  
+	</ul>
+  </div>

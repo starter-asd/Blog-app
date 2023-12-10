@@ -1,0 +1,29 @@
+<%- include('partials/header') %>
+<body>
+<form id="addPost" action="/submit" method="post" class="was-validated">
+	<h1 class="h3 mb-3 fw-normal">Please Complete Form</h1>
+
+	<div class="form-floating">
+		<label for="floatingInput">Email address</label>
+		<input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" required="true">
+	</div>
+	<div class="form-floating">
+		<label for="floatingPassword">Password</label>
+		<input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required="true">
+	</div>
+	<div class="form-floating">
+		<label for="floatingPassword">Tittle</label>
+		<input type="text" name="tittle" class="form-control" id="floatingtittle" placeholder="Tittle" required="true">
+	</div>
+	<div class="form-floating">
+		<label for="floatingPassword">Post</label>
+		<textarea class="form-control" name="post" id="floatingpost" placeholder="Post" required="true"></textarea>
+	</div>
+	<div class="form-floating">
+		<p></p>
+	</div>
+
+	<button class="btn btn-primary py-2 " type="submit">Add Post</button>
+</form>
+</body>
+<%- include('partials/footer') %>

@@ -1,0 +1,99 @@
+<article class="blog-post">
+	<% if (locals.data) {
+		let c=0;
+		const options = {
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric'
+			};
+		data.forEach(function(dato){
+	%>
+		<h2 class="display-5 link-body-emphasis mb-1"><%=dato.tittle %></h2>
+		<p class="blog-post-meta"> <%=(new Date(dato.fecha+' '+dato.hora)).toLocaleDateString('en-US', options)+' '+dato.hora %>  by <a href="#"><%=dato.email.split('@')[0] %> </a></p>
+		<p> <%=dato.post %> </p>
+		<p>
+			<ul class="nav col-md-12 justify-content-end list-unstyled d-flex">
+				<li class="ms-3"><a class="text-body-secondary" href="/editpost?id=<%=c %>">
+				<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-tools" viewBox="0 0 16 16">
+				<path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708M3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026z"/>
+				</svg>
+					</a></li>
+			</ul>
+		</p>
+		<hr>
+	<%	
+			c++;
+		});
+	} %>
+	<h2 class="display-5 link-body-emphasis mb-1">Sample blog post</h2>
+	<p class="blog-post-meta">January 1, 2021 by <a href="#">Mark</a></p>
+
+	<p>This blog post shows a few different types of content that's supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.</p>
+
+	<hr>
+	<p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
+	<h2>Inline HTML elements</h2>
+	<p>HTML defines a long list of available inline tags, a complete list of which can be found on the <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element">Mozilla Developer Network</a>.</p>
+	<ul>
+		<li><strong>To bold text</strong>, use <code class="language-plaintext highlighter-rouge">&lt;strong&gt;</code>.</li>
+		<li><em>To italicize text</em>, use <code class="language-plaintext highlighter-rouge">&lt;em&gt;</code>.</li>
+		<li>Abbreviations, like <abbr title="HyperText Markup Language">HTML</abbr> should use <code class="language-plaintext highlighter-rouge">&lt;abbr&gt;</code>, with an optional <code class="language-plaintext highlighter-rouge">title</code> attribute for the full phrase.</li>
+		<li>Citations, like <cite>- Mark Otto</cite>, should use <code class="language-plaintext highlighter-rouge">&lt;cite&gt;</code>.</li>
+		<li><del>Deleted</del> text should use <code class="language-plaintext highlighter-rouge">&lt;del&gt;</code> and <ins>inserted</ins> text should use <code class="language-plaintext highlighter-rouge">&lt;ins&gt;</code>.</li>
+		<li>Superscript <sup>text</sup> uses <code class="language-plaintext highlighter-rouge">&lt;sup&gt;</code> and subscript <sub>text</sub> uses <code class="language-plaintext highlighter-rouge">&lt;sub&gt;</code>.</li>
+	</ul>
+	<p>Most of these elements are styled by browsers with few modifications on our part.</p>
+	<h2>Heading</h2>
+	<p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
+	<h3>Sub-heading</h3>
+	<p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
+	<pre><code>Example code block</code></pre>
+	<p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
+</article>
+
+<article class="blog-post">
+	<h2 class="display-5 link-body-emphasis mb-1">Another blog post</h2>
+	<p class="blog-post-meta">December 23, 2020 by <a href="#">Jacob</a></p>
+
+	<p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
+	<blockquote>
+		<p>Longer quote goes here, maybe with some <strong>emphasized text</strong> in the middle of it.</p>
+	</blockquote>
+	<p>This is some additional paragraph placeholder content. It has been written to fill the available space and show how a longer snippet of text affects the surrounding content. We'll repeat it often to keep the demonstration flowing, so be on the lookout for this exact same string of text.</p>
+	<h3>Example table</h3>
+	<p>And don't forget about tables in these posts:</p>
+	<table class="table">
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Upvotes</th>
+			<th>Downvotes</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td>Alice</td>
+			<td>10</td>
+			<td>11</td>
+		</tr>
+		<tr>
+			<td>Bob</td>
+			<td>4</td>
+			<td>3</td>
+		</tr>
+		<tr>
+			<td>Charlie</td>
+			<td>7</td>
+			<td>9</td>
+		</tr>
+		</tbody>
+		<tfoot>
+		<tr>
+			<td>Totals</td>
+			<td>21</td>
+			<td>23</td>
+		</tr>
+		</tfoot>
+	</table>
+	<p>This is some additional paragraph placeholder content. It's a slightly shorter version of the other highly repetitive body text used throughout.</p>
+</article>
